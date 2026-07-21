@@ -1,4 +1,47 @@
 {
   "last_updated": "2026-07-21",
-  "zips": {}
+  "zips": {
+    "98028": {
+      "medianPrice": 907500,
+      "avgPpsqft": 471,
+      "marginalRate": 197,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98034": {
+      "medianPrice": 1020000,
+      "avgPpsqft": 577,
+      "marginalRate": 242,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98052": {
+      "medianPrice": 1302500,
+      "avgPpsqft": 630,
+      "marginalRate": 264,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98072": {
+      "medianPrice": 1298000,
+      "avgPpsqft": 564,
+      "marginalRate": 236,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98021": {
+      "medianPrice": 1099950,
+      "avgPpsqft": 495,
+      "marginalRate": 207,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98033": {
+      "medianPrice": 1900000,
+      "avgPpsqft": 789,
+      "marginalRate": 331,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98012": {
+      "medianPrice": 1026250,
+      "avgPpsqft": 498,
+      "marginalRate": 209,
+      "dataPeriodEnd": "2026-05-31"
+    }
+  }
 }
