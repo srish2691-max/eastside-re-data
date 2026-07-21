@@ -4,6 +4,9 @@ on:
     - cron: '0 14 * * 1' # Runs every Monday at 7 AM PDT
   workflow_dispatch:     # Allows manual trigger button in GitHub UI
 
+permissions:
+  contents: write        # REQUIRED: Gives the bot permission to push the JSON back to your repo
+
 jobs:
   update-data:
     runs-on: ubuntu-latest
@@ -25,8 +28,8 @@ jobs:
           curl -sSL https://redfin-public-data.s3.us-west-2.amazonaws.com/redfin_market_tracker/zip_code_market_tracker.tsv000.gz -o raw.tsv.gz
 
           echo "Filtering down to Eastside ZIP codes..."
-          # Single-pass stream: grabs column headers (period_end/region) AND target ZIPs without breaking the pipe
-          zcat raw.tsv.gz | grep -E "(period_end|region|98028|98072|98012|98034|98033|98052|98021)" > filtered.tsv || true
+          # NR==1 GUARANTEES the header row is captured; the regex captures our 7 ZIP codes in a single pass
+          zcat raw.tsv.gz | awk 'NR==1 || /98028|98072|98012|98034|98033|98052|98021/' > filtered.tsv || true
           
           rm raw.tsv.gz
           echo "✅ Filtered successfully! Total matching rows captured:"
@@ -36,40 +39,65 @@ jobs:
         run: |
           python - << 'EOF'
           import pandas as pd
-          import json, datetime
+          import json, datetime, sys
 
-          # Load the tiny, pre-filtered file (finishes in milliseconds)
-          df = pd.read_csv('filtered.tsv', sep='\t', low_memory=False, on_bad_lines='skip')
+          try:
+              df = pd.read_csv('filtered.tsv', sep='\t', low_memory=False, on_bad_lines='skip')
+              if df.empty:
+                  print("❌ Error: filtered.tsv is empty.")
+                  sys.exit(1)
 
-          col_name = 'region' if 'region' in df.columns else 'region_name'
-          df['clean_zip'] = df[col_name].astype(str).apply(lambda x: x.split(':')[-1].strip())
+              print("ℹ️ Found file headers:", df.columns.tolist()[:8])
 
-          target_zips = ['98028', '98072', '98012', '98034', '98033', '98052', '98021']
-          eastside = df[df['clean_zip'].isin(target_zips)].copy()
+              # 1. Dynamically find the Region/ZIP column
+              possible_zip_cols = ['region', 'region_name', 'Region', 'Region Name', 'zip_code', 'Zip Code']
+              col_name = next((col for col in possible_zip_cols if col in df.columns), None)
+              if not col_name:
+                  for c in df.columns:
+                      if 'region' in str(c).lower() or 'zip' in str(c).lower():
+                          col_name = c
+                          break
+              if not col_name:
+                  raise KeyError(f"Could not locate region column in headers: {df.columns.tolist()}")
 
-          if 'property_type' in eastside.columns:
-              prop_filter = eastside['property_type'].isin(['Single Family Residential', 'All Residential', 'All Home Types'])
-              if prop_filter.any():
-                  eastside = eastside[prop_filter]
+              df['clean_zip'] = df[col_name].astype(str).apply(lambda x: x.split(':')[-1].strip())
 
-          latest_date = eastside['period_end'].max()
-          current_data = eastside[eastside['period_end'] == latest_date]
+              # 2. Filter strictly for target ZIP codes and Residential properties
+              target_zips = ['98028', '98072', '98012', '98034', '98033', '98052', '98021']
+              eastside = df[df['clean_zip'].isin(target_zips)].copy()
 
-          output = { "last_updated": str(datetime.date.today()), "zips": {} }
-          for _, row in current_data.iterrows():
-              zip_code = str(row['clean_zip'])
-              med_price = int(row['median_sale_price']) if pd.notnull(row['median_sale_price']) else 1400000
-              ppsqft = int(row['median_ppsf']) if pd.notnull(row['median_ppsf']) else 500
+              if 'property_type' in eastside.columns:
+                  prop_filter = eastside['property_type'].isin(['Single Family Residential', 'All Residential', 'All Home Types'])
+                  if prop_filter.any():
+                      eastside = eastside[prop_filter]
 
-              output["zips"][zip_code] = {
-                  "medianPrice": med_price,
-                  "avgPpsqft": ppsqft,
-                  "marginalRate": int(ppsqft * 0.42)
-              }
+              # 3. Dynamically find date, price, and ppsf columns
+              date_col = next((c for c in df.columns if 'period_end' in str(c).lower() or 'date' in str(c).lower()), 'period_end')
+              price_col = next((c for c in df.columns if 'median_sale_price' in str(c).lower() or 'price' in str(c).lower()), 'median_sale_price')
+              ppsf_col = next((c for c in df.columns if 'ppsf' in str(c).lower() or 'sqft' in str(c).lower()), 'median_ppsf')
 
-          with open("eastside_markets.json", "w") as f:
-              json.dump(output, f, indent=2)
-          print("✅ Generated eastside_markets.json instantly for zips:", list(output["zips"].keys()))
+              latest_date = eastside[date_col].max()
+              current_data = eastside[eastside[date_col] == latest_date]
+
+              output = { "last_updated": str(datetime.date.today()), "zips": {} }
+              for _, row in current_data.iterrows():
+                  zip_code = str(row['clean_zip'])
+                  med_price = int(row[price_col]) if pd.notnull(row[price_col]) else 1400000
+                  ppsqft = int(row[ppsf_col]) if pd.notnull(row[ppsf_col]) else 500
+
+                  output["zips"][zip_code] = {
+                      "medianPrice": med_price,
+                      "avgPpsqft": ppsqft,
+                      "marginalRate": int(ppsqft * 0.42)
+                  }
+
+              with open("eastside_markets.json", "w") as f:
+                  json.dump(output, f, indent=2)
+              print("✅ Generated eastside_markets.json successfully for zips:", list(output["zips"].keys()))
+
+          except Exception as e:
+              print(f"❌ Fatal Python Error: {e}")
+              sys.exit(1)
           EOF
 
       - name: Commit and Push Updated Data
@@ -77,5 +105,11 @@ jobs:
           git config --global user.name 'GitHub Action Bot'
           git config --global user.email 'bot@github.com'
           git add eastside_markets.json
-          git commit -m "Auto-update Eastside MLS market data" || exit 0
-          git push
+          
+          if git diff --staged --quiet; then
+            echo "ℹ️ No changes detected in market data. Skipping push."
+          else
+            git commit -m "Auto-update Eastside MLS market data"
+            git push
+            echo "✅ Successfully pushed updated JSON to repository!"
+          fi
