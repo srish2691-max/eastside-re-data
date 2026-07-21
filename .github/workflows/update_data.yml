@@ -17,23 +17,20 @@ jobs:
           python-version: '3.10'
 
       - name: Install Dependencies
-        run: pip install pandas
+        run: pip install pandas requests
 
       - name: Fetch and Filter Data (Ultra Fast)
         run: |
-          # 1. Download Redfin's nationwide file to disk
           echo "Downloading Redfin dataset..."
-          curl -s https://redfin-public-data.s3.us-west-2.amazonaws.com/redfin_market_tracker/zip_code_market_tracker.tsv000.gz -o raw.tsv.gz
+          curl -sSL https://redfin-public-data.s3.us-west-2.amazonaws.com/redfin_market_tracker/zip_code_market_tracker.tsv000.gz -o raw.tsv.gz
 
-          # 2. Extract header row
-          zcat raw.tsv.gz | head -n 1 > filtered.tsv
-
-          # 3. Filter strictly for your 7 Eastside ZIP codes directly in Bash
-          zcat raw.tsv.gz | grep -E "(98028|98072|98012|98034|98033|98052|98021)" >> filtered.tsv
+          echo "Filtering down to Eastside ZIP codes..."
+          # Single-pass stream: grabs column headers (period_end/region) AND target ZIPs without breaking the pipe
+          zcat raw.tsv.gz | grep -E "(period_end|region|98028|98072|98012|98034|98033|98052|98021)" > filtered.tsv || true
           
-          # Clean up large file
           rm raw.tsv.gz
-          echo "Filtered down to target ZIP codes successfully."
+          echo "✅ Filtered successfully! Total matching rows captured:"
+          wc -l filtered.tsv
 
       - name: Generate JSON
         run: |
@@ -41,7 +38,7 @@ jobs:
           import pandas as pd
           import json, datetime
 
-          # Load the tiny, pre-filtered file (instant)
+          # Load the tiny, pre-filtered file (finishes in milliseconds)
           df = pd.read_csv('filtered.tsv', sep='\t', low_memory=False, on_bad_lines='skip')
 
           col_name = 'region' if 'region' in df.columns else 'region_name'
@@ -50,11 +47,14 @@ jobs:
           target_zips = ['98028', '98072', '98012', '98034', '98033', '98052', '98021']
           eastside = df[df['clean_zip'].isin(target_zips)].copy()
 
-          # Isolate latest rolling period
+          if 'property_type' in eastside.columns:
+              prop_filter = eastside['property_type'].isin(['Single Family Residential', 'All Residential', 'All Home Types'])
+              if prop_filter.any():
+                  eastside = eastside[prop_filter]
+
           latest_date = eastside['period_end'].max()
           current_data = eastside[eastside['period_end'] == latest_date]
 
-          # Build JSON
           output = { "last_updated": str(datetime.date.today()), "zips": {} }
           for _, row in current_data.iterrows():
               zip_code = str(row['clean_zip'])
