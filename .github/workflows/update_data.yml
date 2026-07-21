@@ -1,0 +1,57 @@
+name: Update Eastside MLS Data
+on:
+  schedule:
+    - cron: '0 14 * * 1' # Runs every Monday at 7 AM PDT
+  workflow_dispatch:     # Allows you to click a button to update manually anytime
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install Pandas
+        run: pip install pandas requests
+      - name: Fetch Redfin Data and Generate JSON
+        run: |
+          import pandas as pd
+          import json, datetime
+          
+          # Download Redfin's free weekly ZIP code dataset (contains all US MLS sales)
+          url = "https://redfin-public-data.s3.us-west-2.amazonaws.com/redfin_market_tracker/zip_market_tracker.tsv000.gz"
+          df = pd.read_csv(url, compression='gzip', sep='\t', low_memory=False)
+          
+          # Filter strictly for your Eastside target ZIP codes
+          target_zips = [98028, 98072, 98012, 98034, 98033, 98052, 98021]
+          eastside = df[df['region_name'].isin(target_zips)].copy()
+          
+          # Get the latest rolling 90-day period
+          latest_date = eastside['period_end'].max()
+          current_data = eastside[eastside['period_end'] == latest_date]
+          
+          # Build the JSON object
+          output = { "last_updated": str(datetime.date.today()), "zips": {} }
+          for _, row in current_data.iterrows():
+              zip_code = str(row['region_name'])
+              med_price = int(row['median_sale_price'])
+              ppsqft = int(row['median_ppsf'])
+              
+              output["zips"][zip_code] = {
+                  "medianPrice": med_price,
+                  "avgPpsqft": ppsqft,
+                  "marginalRate": int(ppsqft * 0.42) # 42% Appraisal Rule
+              }
+              
+          with open("eastside_markets.json", "w") as f:
+              json.dump(output, f, indent=2)
+              
+      - name: Commit and Push Updated Data
+        run: |
+          git config --global user.name 'GitHub Action Bot'
+          git config --global user.email 'bot@github.com'
+          git add eastside_markets.json
+          git commit -m "Auto-update Eastside MLS market data" || exit 0
+          git push
