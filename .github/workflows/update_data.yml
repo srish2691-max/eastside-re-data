@@ -48,42 +48,49 @@ jobs:
 
               print("ℹ️ Found file headers:", df.columns.tolist()[:8])
 
-              # 1. Dynamically find the Region/ZIP column
-              possible_zip_cols = ['region', 'region_name', 'Region', 'Region Name', 'zip_code', 'Zip Code']
-              col_name = next((col for col in possible_zip_cols if col in df.columns), None)
+              # 1. BULLETPROOF COLUMN LOCATOR (Ignores REGION_TYPE and REGION_TYPE_ID)
+              col_name = None
+              for c in df.columns:
+                  if str(c).upper() in ['REGION', 'REGION_NAME', 'ZIP', 'ZIP_CODE', 'REGION_ID']:
+                      col_name = c
+                      break
               if not col_name:
                   for c in df.columns:
-                      if 'region' in str(c).lower() or 'zip' in str(c).lower():
+                      c_up = str(c).upper()
+                      if ('REGION' in c_up or 'ZIP' in c_up) and ('TYPE' not in c_up and '_ID' not in c_up):
                           col_name = c
                           break
+              
               if not col_name:
                   raise KeyError(f"Could not locate region column in headers: {df.columns.tolist()}")
 
-              # BULLETPROOF ZIP EXTRACTOR: Finds exact 5-digit regex pattern inside any text string
+              # Extract exact 5-digit ZIP code pattern
               df['clean_zip'] = df[col_name].astype(str).str.extract(r'(\d{5})')[0]
               
-              print("ℹ️ Extracted unique ZIP codes from file:", df['clean_zip'].dropna().unique().tolist())
+              print(f"ℹ️ Selected Region Column: '{col_name}' | Extracted ZIPs: {df['clean_zip'].dropna().unique().tolist()}")
 
-              # 2. Filter for target ZIP codes
+              # 2. Filter strictly for target ZIP codes
               target_zips = ['98028', '98072', '98012', '98034', '98033', '98052', '98021']
               eastside = df[df['clean_zip'].isin(target_zips)].copy()
 
               if eastside.empty:
-                  print("❌ No target ZIPs matched! Check extraction logs above.")
+                  print("❌ No target ZIPs matched after cleaning! Check extraction logs above.")
                   sys.exit(1)
 
-              # 3. Filter for Residential property types if column exists
-              if 'property_type' in eastside.columns:
-                  prop_filter = eastside['property_type'].astype(str).str.contains('Single Family|All Residential|All Home', case=False, na=False)
+              # 3. Dynamically locate Property Type, Date, Price, and PPSF columns
+              prop_col = next((c for c in df.columns if str(c).upper() in ['PROPERTY_TYPE', 'PROP_TYPE', 'HOME_TYPE']), None)
+              if prop_col and prop_col in eastside.columns:
+                  prop_filter = eastside[prop_col].astype(str).str.contains('Single Family|All Residential|All Home', case=False, na=False)
                   if prop_filter.any():
                       eastside = eastside[prop_filter]
 
-              # 4. Dynamically find date, price, and ppsf columns
-              date_col = next((c for c in df.columns if 'period_end' in str(c).lower() or 'date' in str(c).lower()), 'period_end')
-              price_col = next((c for c in df.columns if 'median_sale_price' in str(c).lower() or 'price' in str(c).lower()), 'median_sale_price')
-              ppsf_col = next((c for c in df.columns if 'ppsf' in str(c).lower() or 'sqft' in str(c).lower()), 'median_ppsf')
+              date_col = next((c for c in df.columns if str(c).upper() in ['PERIOD_END', 'DATE', 'END_DATE']), 'PERIOD_END')
+              price_col = next((c for c in df.columns if str(c).upper() in ['MEDIAN_SALE_PRICE', 'MEDIAN_PRICE', 'PRICE']), 'MEDIAN_SALE_PRICE')
+              ppsf_col = next((c for c in df.columns if str(c).upper() in ['MEDIAN_PPSF', 'PPSF', 'PRICE_PER_SQFT']), 'MEDIAN_PPSF')
 
-              # 5. GRAB NEWEST DATA PER ZIP: Sort descending by date, then keep the #1 newest entry for each individual ZIP code
+              print(f"ℹ️ Mapped Data Columns -> Date: '{date_col}' | Price: '{price_col}' | PPSF: '{ppsf_col}'")
+
+              # 4. GRAB NEWEST DATA PER ZIP: Sort descending by date, then keep the #1 newest entry per ZIP
               eastside = eastside.sort_values(by=date_col, ascending=False)
               latest_per_zip = eastside.drop_duplicates(subset=['clean_zip']).copy()
 
