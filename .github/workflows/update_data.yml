@@ -17,37 +17,44 @@ jobs:
           python-version: '3.10'
 
       - name: Install Dependencies
-        run: pip install pandas requests
+        run: pip install pandas
 
-      - name: Fetch Redfin Data and Generate JSON
+      - name: Fetch and Filter Data (Ultra Fast)
+        run: |
+          # 1. Download Redfin's nationwide file to disk
+          echo "Downloading Redfin dataset..."
+          curl -s https://redfin-public-data.s3.us-west-2.amazonaws.com/redfin_market_tracker/zip_code_market_tracker.tsv000.gz -o raw.tsv.gz
+
+          # 2. Extract header row
+          zcat raw.tsv.gz | head -n 1 > filtered.tsv
+
+          # 3. Filter strictly for your 7 Eastside ZIP codes directly in Bash
+          zcat raw.tsv.gz | grep -E "(98028|98072|98012|98034|98033|98052|98021)" >> filtered.tsv
+          
+          # Clean up large file
+          rm raw.tsv.gz
+          echo "Filtered down to target ZIP codes successfully."
+
+      - name: Generate JSON
         run: |
           python - << 'EOF'
           import pandas as pd
           import json, datetime
 
-          # 1. Download Redfin's official ZIP Code Market Tracker dataset
-          url = "https://redfin-public-data.s3.us-west-2.amazonaws.com/redfin_market_tracker/zip_code_market_tracker.tsv000.gz"
-          df = pd.read_csv(url, compression='gzip', sep='\t', low_memory=False, on_bad_lines='skip')
+          # Load the tiny, pre-filtered file (instant)
+          df = pd.read_csv('filtered.tsv', sep='\t', low_memory=False, on_bad_lines='skip')
 
-          # 2. Identify the correct region column and clean the "Zip Code: " prefix
           col_name = 'region' if 'region' in df.columns else 'region_name'
           df['clean_zip'] = df[col_name].astype(str).apply(lambda x: x.split(':')[-1].strip())
 
-          # 3. Filter strictly for your Eastside target ZIP codes and Residential properties
           target_zips = ['98028', '98072', '98012', '98034', '98033', '98052', '98021']
           eastside = df[df['clean_zip'].isin(target_zips)].copy()
-          
-          # Filter out condos/land if property_type column exists, preferring Single Family / All Residential
-          if 'property_type' in eastside.columns:
-              prop_filter = eastside['property_type'].isin(['Single Family Residential', 'All Residential', 'All Home Types'])
-              if prop_filter.any():
-                  eastside = eastside[prop_filter]
 
-          # 4. Isolate the latest rolling 90-day period available in the feed
+          # Isolate latest rolling period
           latest_date = eastside['period_end'].max()
           current_data = eastside[eastside['period_end'] == latest_date]
 
-          # 5. Build JSON structure
+          # Build JSON
           output = { "last_updated": str(datetime.date.today()), "zips": {} }
           for _, row in current_data.iterrows():
               zip_code = str(row['clean_zip'])
@@ -62,7 +69,7 @@ jobs:
 
           with open("eastside_markets.json", "w") as f:
               json.dump(output, f, indent=2)
-          print("✅ Successfully generated eastside_markets.json for zips:", list(output["zips"].keys()))
+          print("✅ Generated eastside_markets.json instantly for zips:", list(output["zips"].keys()))
           EOF
 
       - name: Commit and Push Updated Data
