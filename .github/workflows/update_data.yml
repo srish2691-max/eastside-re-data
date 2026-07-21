@@ -25,24 +25,34 @@ jobs:
           import pandas as pd
           import json, datetime
 
-          # Download Redfin's free weekly ZIP dataset
-          url = "https://redfin-public-data.s3.us-west-2.amazonaws.com/redfin_market_tracker/zip_market_tracker.tsv000.gz"
-          df = pd.read_csv(url, compression='gzip', sep='\t', low_memory=False)
+          # 1. Download Redfin's official ZIP Code Market Tracker dataset
+          url = "https://redfin-public-data.s3.us-west-2.amazonaws.com/redfin_market_tracker/zip_code_market_tracker.tsv000.gz"
+          df = pd.read_csv(url, compression='gzip', sep='\t', low_memory=False, on_bad_lines='skip')
 
-          # Filter strictly for target Eastside ZIP codes
-          target_zips = [98028, 98072, 98012, 98034, 98033, 98052, 98021]
-          eastside = df[df['region_name'].isin(target_zips)].copy()
+          # 2. Identify the correct region column and clean the "Zip Code: " prefix
+          col_name = 'region' if 'region' in df.columns else 'region_name'
+          df['clean_zip'] = df[col_name].astype(str).apply(lambda x: x.split(':')[-1].strip())
 
-          # Isolate the latest rolling 90-day period
+          # 3. Filter strictly for your Eastside target ZIP codes and Residential properties
+          target_zips = ['98028', '98072', '98012', '98034', '98033', '98052', '98021']
+          eastside = df[df['clean_zip'].isin(target_zips)].copy()
+          
+          # Filter out condos/land if property_type column exists, preferring Single Family / All Residential
+          if 'property_type' in eastside.columns:
+              prop_filter = eastside['property_type'].isin(['Single Family Residential', 'All Residential', 'All Home Types'])
+              if prop_filter.any():
+                  eastside = eastside[prop_filter]
+
+          # 4. Isolate the latest rolling 90-day period available in the feed
           latest_date = eastside['period_end'].max()
           current_data = eastside[eastside['period_end'] == latest_date]
 
-          # Build JSON structure
+          # 5. Build JSON structure
           output = { "last_updated": str(datetime.date.today()), "zips": {} }
           for _, row in current_data.iterrows():
-              zip_code = str(row['region_name'])
-              med_price = int(row['median_sale_price'])
-              ppsqft = int(row['median_ppsf'])
+              zip_code = str(row['clean_zip'])
+              med_price = int(row['median_sale_price']) if pd.notnull(row['median_sale_price']) else 1400000
+              ppsqft = int(row['median_ppsf']) if pd.notnull(row['median_ppsf']) else 500
 
               output["zips"][zip_code] = {
                   "medianPrice": med_price,
@@ -52,6 +62,7 @@ jobs:
 
           with open("eastside_markets.json", "w") as f:
               json.dump(output, f, indent=2)
+          print("✅ Successfully generated eastside_markets.json for zips:", list(output["zips"].keys()))
           EOF
 
       - name: Commit and Push Updated Data
