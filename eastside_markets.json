@@ -1,34 +1,166 @@
 {
   "last_updated": "2026-07-21",
   "zips": {
-    "98028": {
-      "medianPrice": 907500,
-      "avgPpsqft": 471,
-      "marginalRate": 197,
+    "98001": {
+      "medianPrice": 699999,
+      "avgPpsqft": 330,
+      "marginalRate": 138,
       "dataPeriodEnd": "2026-05-31"
     },
-    "98034": {
-      "medianPrice": 1020000,
-      "avgPpsqft": 577,
-      "marginalRate": 242,
+    "98002": {
+      "medianPrice": 525000,
+      "avgPpsqft": 363,
+      "marginalRate": 152,
       "dataPeriodEnd": "2026-05-31"
     },
-    "98052": {
-      "medianPrice": 1302500,
-      "avgPpsqft": 630,
-      "marginalRate": 264,
+    "98003": {
+      "medianPrice": 599999,
+      "avgPpsqft": 322,
+      "marginalRate": 135,
       "dataPeriodEnd": "2026-05-31"
     },
-    "98072": {
-      "medianPrice": 1298000,
-      "avgPpsqft": 564,
-      "marginalRate": 236,
+    "98004": {
+      "medianPrice": 3280000,
+      "avgPpsqft": 1005,
+      "marginalRate": 422,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98005": {
+      "medianPrice": 2127500,
+      "avgPpsqft": 766,
+      "marginalRate": 321,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98006": {
+      "medianPrice": 1800000,
+      "avgPpsqft": 656,
+      "marginalRate": 275,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98007": {
+      "medianPrice": 1200000,
+      "avgPpsqft": 565,
+      "marginalRate": 237,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98008": {
+      "medianPrice": 1470000,
+      "avgPpsqft": 670,
+      "marginalRate": 281,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98009": {
+      "medianPrice": 500000,
+      "avgPpsqft": 664,
+      "marginalRate": 278,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98010": {
+      "medianPrice": 779950,
+      "avgPpsqft": 352,
+      "marginalRate": 147,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98011": {
+      "medianPrice": 999990,
+      "avgPpsqft": 497,
+      "marginalRate": 208,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98012": {
+      "medianPrice": 958750,
+      "avgPpsqft": 474,
+      "marginalRate": 199,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98014": {
+      "medianPrice": 1196532,
+      "avgPpsqft": 446,
+      "marginalRate": 187,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98019": {
+      "medianPrice": 949997,
+      "avgPpsqft": 457,
+      "marginalRate": 191,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98020": {
+      "medianPrice": 1372500,
+      "avgPpsqft": 641,
+      "marginalRate": 269,
       "dataPeriodEnd": "2026-05-31"
     },
     "98021": {
-      "medianPrice": 1099950,
-      "avgPpsqft": 495,
-      "marginalRate": 207,
+      "medianPrice": 1200000,
+      "avgPpsqft": 505,
+      "marginalRate": 212,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98022": {
+      "medianPrice": 625000,
+      "avgPpsqft": 368,
+      "marginalRate": 154,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98023": {
+      "medianPrice": 642500,
+      "avgPpsqft": 311,
+      "marginalRate": 130,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98024": {
+      "medianPrice": 1200000,
+      "avgPpsqft": 570,
+      "marginalRate": 239,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98025": {
+      "medianPrice": 1115000,
+      "avgPpsqft": 375,
+      "marginalRate": 157,
+      "dataPeriodEnd": "2022-02-28"
+    },
+    "98026": {
+      "medianPrice": 960000,
+      "avgPpsqft": 477,
+      "marginalRate": 200,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98027": {
+      "medianPrice": 1300000,
+      "avgPpsqft": 550,
+      "marginalRate": 231,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98028": {
+      "medianPrice": 1180000,
+      "avgPpsqft": 513,
+      "marginalRate": 215,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98029": {
+      "medianPrice": 1510000,
+      "avgPpsqft": 626,
+      "marginalRate": 262,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98030": {
+      "medianPrice": 720000,
+      "avgPpsqft": 348,
+      "marginalRate": 146,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98031": {
+      "medianPrice": 670000,
+      "avgPpsqft": 348,
+      "marginalRate": 146,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98032": {
+      "medianPrice": 550000,
+      "avgPpsqft": 341,
+      "marginalRate": 143,
       "dataPeriodEnd": "2026-05-31"
     },
     "98033": {
@@ -37,10 +169,814 @@
       "marginalRate": 331,
       "dataPeriodEnd": "2026-05-31"
     },
-    "98012": {
-      "medianPrice": 1026250,
-      "avgPpsqft": 498,
-      "marginalRate": 209,
+    "98034": {
+      "medianPrice": 1280000,
+      "avgPpsqft": 656,
+      "marginalRate": 275,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98036": {
+      "medianPrice": 830000,
+      "avgPpsqft": 472,
+      "marginalRate": 198,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98037": {
+      "medianPrice": 870000,
+      "avgPpsqft": 426,
+      "marginalRate": 178,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98038": {
+      "medianPrice": 750000,
+      "avgPpsqft": 389,
+      "marginalRate": 163,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98039": {
+      "medianPrice": 5559500,
+      "avgPpsqft": 1278,
+      "marginalRate": 536,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98040": {
+      "medianPrice": 2492500,
+      "avgPpsqft": 736,
+      "marginalRate": 309,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98042": {
+      "medianPrice": 750000,
+      "avgPpsqft": 338,
+      "marginalRate": 141,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98043": {
+      "medianPrice": 647250,
+      "avgPpsqft": 443,
+      "marginalRate": 186,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98045": {
+      "medianPrice": 1293500,
+      "avgPpsqft": 500,
+      "marginalRate": 210,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98046": {
+      "medianPrice": 770000,
+      "avgPpsqft": 607,
+      "marginalRate": 254,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98047": {
+      "medianPrice": 535000,
+      "avgPpsqft": 390,
+      "marginalRate": 163,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98051": {
+      "medianPrice": 937500,
+      "avgPpsqft": 411,
+      "marginalRate": 172,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98052": {
+      "medianPrice": 1302500,
+      "avgPpsqft": 630,
+      "marginalRate": 264,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98053": {
+      "medianPrice": 1675000,
+      "avgPpsqft": 605,
+      "marginalRate": 254,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98055": {
+      "medianPrice": 750000,
+      "avgPpsqft": 400,
+      "marginalRate": 168,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98056": {
+      "medianPrice": 1105500,
+      "avgPpsqft": 513,
+      "marginalRate": 215,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98057": {
+      "medianPrice": 690000,
+      "avgPpsqft": 389,
+      "marginalRate": 163,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98058": {
+      "medianPrice": 760000,
+      "avgPpsqft": 389,
+      "marginalRate": 163,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98059": {
+      "medianPrice": 1099975,
+      "avgPpsqft": 449,
+      "marginalRate": 188,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98063": {
+      "medianPrice": 551130,
+      "avgPpsqft": 234,
+      "marginalRate": 98,
+      "dataPeriodEnd": "2020-11-30"
+    },
+    "98065": {
+      "medianPrice": 1150000,
+      "avgPpsqft": 483,
+      "marginalRate": 202,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98068": {
+      "medianPrice": 700000,
+      "avgPpsqft": 354,
+      "marginalRate": 148,
+      "dataPeriodEnd": "2026-04-30"
+    },
+    "98070": {
+      "medianPrice": 939500,
+      "avgPpsqft": 497,
+      "marginalRate": 208,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98071": {
+      "medianPrice": 390000,
+      "avgPpsqft": 426,
+      "marginalRate": 178,
+      "dataPeriodEnd": "2025-06-30"
+    },
+    "98072": {
+      "medianPrice": 1220000,
+      "avgPpsqft": 557,
+      "marginalRate": 233,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98074": {
+      "medianPrice": 1710000,
+      "avgPpsqft": 610,
+      "marginalRate": 256,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98075": {
+      "medianPrice": 1780000,
+      "avgPpsqft": 607,
+      "marginalRate": 254,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98077": {
+      "medianPrice": 1717500,
+      "avgPpsqft": 528,
+      "marginalRate": 221,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98083": {
+      "medianPrice": 940000,
+      "avgPpsqft": 542,
+      "marginalRate": 227,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98087": {
+      "medianPrice": 704997,
+      "avgPpsqft": 400,
+      "marginalRate": 168,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98092": {
+      "medianPrice": 680000,
+      "avgPpsqft": 324,
+      "marginalRate": 136,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98101": {
+      "medianPrice": 682000,
+      "avgPpsqft": 694,
+      "marginalRate": 291,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98102": {
+      "medianPrice": 830000,
+      "avgPpsqft": 595,
+      "marginalRate": 249,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98103": {
+      "medianPrice": 987000,
+      "avgPpsqft": 632,
+      "marginalRate": 265,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98104": {
+      "medianPrice": 390000,
+      "avgPpsqft": 603,
+      "marginalRate": 253,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98105": {
+      "medianPrice": 1543000,
+      "avgPpsqft": 658,
+      "marginalRate": 276,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98106": {
+      "medianPrice": 700000,
+      "avgPpsqft": 443,
+      "marginalRate": 186,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98107": {
+      "medianPrice": 1060000,
+      "avgPpsqft": 552,
+      "marginalRate": 231,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98108": {
+      "medianPrice": 643000,
+      "avgPpsqft": 469,
+      "marginalRate": 196,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98109": {
+      "medianPrice": 1750000,
+      "avgPpsqft": 679,
+      "marginalRate": 285,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98110": {
+      "medianPrice": 1453500,
+      "avgPpsqft": 538,
+      "marginalRate": 225,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98112": {
+      "medianPrice": 1675000,
+      "avgPpsqft": 655,
+      "marginalRate": 275,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98113": {
+      "medianPrice": 1060000,
+      "avgPpsqft": 524,
+      "marginalRate": 220,
+      "dataPeriodEnd": "2023-08-31"
+    },
+    "98115": {
+      "medianPrice": 1278250,
+      "avgPpsqft": 608,
+      "marginalRate": 255,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98116": {
+      "medianPrice": 953500,
+      "avgPpsqft": 595,
+      "marginalRate": 249,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98117": {
+      "medianPrice": 960000,
+      "avgPpsqft": 601,
+      "marginalRate": 252,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98118": {
+      "medianPrice": 797450,
+      "avgPpsqft": 470,
+      "marginalRate": 197,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98119": {
+      "medianPrice": 1020000,
+      "avgPpsqft": 578,
+      "marginalRate": 242,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98121": {
+      "medianPrice": 599000,
+      "avgPpsqft": 672,
+      "marginalRate": 282,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98122": {
+      "medianPrice": 1239000,
+      "avgPpsqft": 591,
+      "marginalRate": 248,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98125": {
+      "medianPrice": 798000,
+      "avgPpsqft": 491,
+      "marginalRate": 206,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98126": {
+      "medianPrice": 767000,
+      "avgPpsqft": 558,
+      "marginalRate": 234,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98127": {
+      "medianPrice": 750000,
+      "avgPpsqft": 531,
+      "marginalRate": 223,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98131": {
+      "medianPrice": 632500,
+      "avgPpsqft": 316,
+      "marginalRate": 132,
+      "dataPeriodEnd": "2026-03-31"
+    },
+    "98132": {
+      "medianPrice": 632500,
+      "avgPpsqft": 316,
+      "marginalRate": 132,
+      "dataPeriodEnd": "2026-03-31"
+    },
+    "98133": {
+      "medianPrice": 751000,
+      "avgPpsqft": 460,
+      "marginalRate": 193,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98134": {
+      "medianPrice": 310000,
+      "avgPpsqft": 317,
+      "marginalRate": 133,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98136": {
+      "medianPrice": 1287500,
+      "avgPpsqft": 570,
+      "marginalRate": 239,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98144": {
+      "medianPrice": 1017750,
+      "avgPpsqft": 531,
+      "marginalRate": 223,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98146": {
+      "medianPrice": 740000,
+      "avgPpsqft": 464,
+      "marginalRate": 194,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98148": {
+      "medianPrice": 677500,
+      "avgPpsqft": 430,
+      "marginalRate": 180,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98155": {
+      "medianPrice": 852500,
+      "avgPpsqft": 501,
+      "marginalRate": 210,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98164": {
+      "medianPrice": 570000,
+      "avgPpsqft": 566,
+      "marginalRate": 237,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98166": {
+      "medianPrice": 1010000,
+      "avgPpsqft": 445,
+      "marginalRate": 186,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98168": {
+      "medianPrice": 600000,
+      "avgPpsqft": 375,
+      "marginalRate": 157,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98175": {
+      "medianPrice": 355000,
+      "avgPpsqft": 378,
+      "marginalRate": 158,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98177": {
+      "medianPrice": 1153750,
+      "avgPpsqft": 555,
+      "marginalRate": 233,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98178": {
+      "medianPrice": 709500,
+      "avgPpsqft": 375,
+      "marginalRate": 157,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98185": {
+      "medianPrice": 459000,
+      "avgPpsqft": 628,
+      "marginalRate": 263,
+      "dataPeriodEnd": "2021-07-31"
+    },
+    "98188": {
+      "medianPrice": 609000,
+      "avgPpsqft": 324,
+      "marginalRate": 136,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98194": {
+      "medianPrice": 1365000,
+      "avgPpsqft": 767,
+      "marginalRate": 322,
+      "dataPeriodEnd": "2025-12-31"
+    },
+    "98195": {
+      "medianPrice": 759950,
+      "avgPpsqft": 507,
+      "marginalRate": 212,
+      "dataPeriodEnd": "2021-04-30"
+    },
+    "98198": {
+      "medianPrice": 575000,
+      "avgPpsqft": 363,
+      "marginalRate": 152,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98199": {
+      "medianPrice": 1326000,
+      "avgPpsqft": 614,
+      "marginalRate": 257,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98201": {
+      "medianPrice": 545000,
+      "avgPpsqft": 379,
+      "marginalRate": 159,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98203": {
+      "medianPrice": 649975,
+      "avgPpsqft": 373,
+      "marginalRate": 156,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98204": {
+      "medianPrice": 551950,
+      "avgPpsqft": 361,
+      "marginalRate": 151,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98205": {
+      "medianPrice": 685000,
+      "avgPpsqft": 363,
+      "marginalRate": 152,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98208": {
+      "medianPrice": 799975,
+      "avgPpsqft": 413,
+      "marginalRate": 173,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98220": {
+      "medianPrice": 447500,
+      "avgPpsqft": 319,
+      "marginalRate": 133,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98221": {
+      "medianPrice": 767000,
+      "avgPpsqft": 379,
+      "marginalRate": 159,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98223": {
+      "medianPrice": 699250,
+      "avgPpsqft": 393,
+      "marginalRate": 165,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98224": {
+      "medianPrice": 865000,
+      "avgPpsqft": 166,
+      "marginalRate": 69,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98225": {
+      "medianPrice": 625280,
+      "avgPpsqft": 487,
+      "marginalRate": 204,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98226": {
+      "medianPrice": 620280,
+      "avgPpsqft": 397,
+      "marginalRate": 166,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98227": {
+      "medianPrice": 1358017,
+      "avgPpsqft": 246,
+      "marginalRate": 103,
+      "dataPeriodEnd": "2025-07-31"
+    },
+    "98228": {
+      "medianPrice": 300000,
+      "avgPpsqft": 334,
+      "marginalRate": 140,
+      "dataPeriodEnd": "2021-02-28"
+    },
+    "98229": {
+      "medianPrice": 709280,
+      "avgPpsqft": 395,
+      "marginalRate": 165,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98230": {
+      "medianPrice": 614500,
+      "avgPpsqft": 335,
+      "marginalRate": 140,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98232": {
+      "medianPrice": 999999,
+      "avgPpsqft": 492,
+      "marginalRate": 206,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98233": {
+      "medianPrice": 545280,
+      "avgPpsqft": 346,
+      "marginalRate": 145,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98235": {
+      "medianPrice": 500000,
+      "avgPpsqft": 227,
+      "marginalRate": 95,
+      "dataPeriodEnd": "2022-05-31"
+    },
+    "98236": {
+      "medianPrice": 735169,
+      "avgPpsqft": 373,
+      "marginalRate": 156,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98237": {
+      "medianPrice": 582780,
+      "avgPpsqft": 264,
+      "marginalRate": 110,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98238": {
+      "medianPrice": 481250,
+      "avgPpsqft": 404,
+      "marginalRate": 169,
+      "dataPeriodEnd": "2025-12-31"
+    },
+    "98239": {
+      "medianPrice": 639890,
+      "avgPpsqft": 360,
+      "marginalRate": 151,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98240": {
+      "medianPrice": 637000,
+      "avgPpsqft": 335,
+      "marginalRate": 140,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98241": {
+      "medianPrice": 500160,
+      "avgPpsqft": 302,
+      "marginalRate": 126,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98244": {
+      "medianPrice": 527500,
+      "avgPpsqft": 387,
+      "marginalRate": 162,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98247": {
+      "medianPrice": 637780,
+      "avgPpsqft": 333,
+      "marginalRate": 139,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98248": {
+      "medianPrice": 665000,
+      "avgPpsqft": 349,
+      "marginalRate": 146,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98249": {
+      "medianPrice": 780000,
+      "avgPpsqft": 398,
+      "marginalRate": 167,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98251": {
+      "medianPrice": 518750,
+      "avgPpsqft": 367,
+      "marginalRate": 154,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98252": {
+      "medianPrice": 590000,
+      "avgPpsqft": 394,
+      "marginalRate": 165,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98253": {
+      "medianPrice": 1675000,
+      "avgPpsqft": 405,
+      "marginalRate": 170,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98255": {
+      "medianPrice": 315000,
+      "avgPpsqft": 225,
+      "marginalRate": 94,
+      "dataPeriodEnd": "2023-12-31"
+    },
+    "98256": {
+      "medianPrice": 317500,
+      "avgPpsqft": 392,
+      "marginalRate": 164,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98257": {
+      "medianPrice": 455000,
+      "avgPpsqft": 269,
+      "marginalRate": 112,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98258": {
+      "medianPrice": 770000,
+      "avgPpsqft": 359,
+      "marginalRate": 150,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98260": {
+      "medianPrice": 857780,
+      "avgPpsqft": 363,
+      "marginalRate": 152,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98262": {
+      "medianPrice": 485000,
+      "avgPpsqft": 460,
+      "marginalRate": 193,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98263": {
+      "medianPrice": 482000,
+      "avgPpsqft": 449,
+      "marginalRate": 188,
+      "dataPeriodEnd": "2026-02-28"
+    },
+    "98264": {
+      "medianPrice": 659000,
+      "avgPpsqft": 329,
+      "marginalRate": 138,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98266": {
+      "medianPrice": 425000,
+      "avgPpsqft": 286,
+      "marginalRate": 120,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98267": {
+      "medianPrice": 165000,
+      "avgPpsqft": 165,
+      "marginalRate": 69,
+      "dataPeriodEnd": "2026-04-30"
+    },
+    "98270": {
+      "medianPrice": 659000,
+      "avgPpsqft": 356,
+      "marginalRate": 149,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98271": {
+      "medianPrice": 624990,
+      "avgPpsqft": 384,
+      "marginalRate": 161,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98272": {
+      "medianPrice": 810000,
+      "avgPpsqft": 358,
+      "marginalRate": 150,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98273": {
+      "medianPrice": 570000,
+      "avgPpsqft": 328,
+      "marginalRate": 137,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98274": {
+      "medianPrice": 677500,
+      "avgPpsqft": 344,
+      "marginalRate": 144,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98275": {
+      "medianPrice": 950000,
+      "avgPpsqft": 439,
+      "marginalRate": 184,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98276": {
+      "medianPrice": 480312,
+      "avgPpsqft": 281,
+      "marginalRate": 118,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98277": {
+      "medianPrice": 589900,
+      "avgPpsqft": 317,
+      "marginalRate": 133,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98281": {
+      "medianPrice": 624500,
+      "avgPpsqft": 387,
+      "marginalRate": 162,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98282": {
+      "medianPrice": 713000,
+      "avgPpsqft": 376,
+      "marginalRate": 157,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98283": {
+      "medianPrice": 375000,
+      "avgPpsqft": 273,
+      "marginalRate": 114,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98284": {
+      "medianPrice": 533280,
+      "avgPpsqft": 349,
+      "marginalRate": 146,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98288": {
+      "medianPrice": 663000,
+      "avgPpsqft": 602,
+      "marginalRate": 252,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98290": {
+      "medianPrice": 949975,
+      "avgPpsqft": 425,
+      "marginalRate": 178,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98291": {
+      "medianPrice": 770000,
+      "avgPpsqft": 341,
+      "marginalRate": 143,
+      "dataPeriodEnd": "2025-12-31"
+    },
+    "98292": {
+      "medianPrice": 699995,
+      "avgPpsqft": 327,
+      "marginalRate": 137,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98293": {
+      "medianPrice": 47500,
+      "avgPpsqft": 59,
+      "marginalRate": 24,
+      "dataPeriodEnd": "2012-05-31"
+    },
+    "98294": {
+      "medianPrice": 586990,
+      "avgPpsqft": 311,
+      "marginalRate": 130,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98295": {
+      "medianPrice": 630296,
+      "avgPpsqft": 288,
+      "marginalRate": 120,
+      "dataPeriodEnd": "2026-05-31"
+    },
+    "98296": {
+      "medianPrice": 1126000,
+      "avgPpsqft": 441,
+      "marginalRate": 185,
       "dataPeriodEnd": "2026-05-31"
     }
   }
